@@ -5,7 +5,9 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\api\v1\StoreTicketRequest;
 use App\Http\Requests\api\v1\UpdateTicketRequest;
+use App\Http\Resources\v1\TicketResource;
 use App\Models\Ticket;
+
 
 class TicketController extends Controller
 {
@@ -14,7 +16,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+//        return TicketResource::
+        return TicketResource::collection(Ticket::all());
     }
 
     /**
@@ -38,7 +41,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        return new TicketResource($ticket);
     }
 
     /**
